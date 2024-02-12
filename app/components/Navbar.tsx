@@ -17,7 +17,7 @@ export default function Navbar() {
                     <FaGithub title='github icon' className='text-slate-700 dark:text-slate-300 hidden md:inline-flex' size={30} />
                 </Link>
                 <Link className='text-white/90 hover:text-white' href='https://twitter.com/kipyegosancho'>
-                    <FaTwitter title='twitter aka X icon' className='text-slate-700 dark:text-slate-300 hidden md:inline-flex' size={30} />
+                    <FaTwitter title='twitter aka X icon' className='text-slate-700 dark:text-slate-300 ' size={30} />
                 </Link>
                 <ThemeToggleBtn />
             </div>
