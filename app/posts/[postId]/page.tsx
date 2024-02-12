@@ -59,9 +59,13 @@ export default async function Post({ params: { postId }}: Props ) {
     return (
         <>
             <h2 className="text-3xl mt-4 mb-0">{meta.title}</h2>
-            <p className="mt-0 text-sm">
-                {pubDate}
-            </p>
+            <div className='mt-1 flex gap-3 items-center'>
+                <p className="text-sm">
+                    {pubDate}
+                </p>
+                <p className='text-sm font-medium'>by Douglas Kipyegon</p>
+                <span className='text-sm'>{meta.duration}</span>
+            </div>
             <article>
                 {content}
             </article>
