@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import {FaTwitter, FaGithub} from 'react-icons/fa'
+import ThemeToggleBtn from './ThemeToggleBtn'
 
 export default function Navbar() {
 
@@ -17,6 +18,7 @@ export default function Navbar() {
                 <Link className='text-white/90 hover:text-white' href='https://twitter.com/kipyegosancho'>
                     <FaTwitter size={30} />
                 </Link>
+                <ThemeToggleBtn />
             </div>
         </div>
     </nav>
