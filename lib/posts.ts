@@ -75,14 +75,14 @@ export async function getPostsMeta(): Promise<Meta[] | undefined> {
 
     const filesArray = repoFileTree.tree.map(obj => obj.path).filter(path => path.endsWith('.mdx'))
 
-    //console.log('Files Array:', filesArray);
+    console.log('Files Array:', filesArray);
 
 
     let posts: Meta[] = []
 
     for (const file of filesArray) {
         const post = await getPostByName(file)
-        //console.log(post)
+        console.log(post)
         if (post) {
             const { meta } = post
             posts.push(meta)
