@@ -3,8 +3,12 @@ import { getPostsMeta, getPostByName } from '@/lib/posts'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import 'highlight.js/styles/github-dark.css' 
+import {ReportView} from './View'
+import { Redis } from '@upstash/redis';
 
 export const revalidate = 0
+
+const redis = Redis.fromEnv();
 
 type Props = {
     params: {
@@ -48,6 +52,10 @@ export default async function Post({ params: { postId }}: Props ) {
     //if (!posts.find(post => post.id === postId)) { notFound() }
     if(!post) notFound()
 
+    //views
+    const views = redis.mget<number[]>(['pageviews', 'posts', postId].join(':'))
+    console.log('views>>>', views)
+
     //const { title, date, contentHtml } = await getPostData(postId)
     const { meta, content } = post
 
@@ -65,8 +73,10 @@ export default async function Post({ params: { postId }}: Props ) {
                 </p>
                 <p className='text-sm font-medium'>by Douglas Kipyegon</p>
                 <span className='text-sm'>{meta.duration}</span>
+                <ReportView slug={postId} />
+                <span className='text-sm'>{views} views</span>
             </div>
-            <article>
+            <article className=''>
                 {content}
             </article>
             <section>
